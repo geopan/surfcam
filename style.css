@@ -1,0 +1,67 @@
+body,
+html {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  font-family: Arial, sans-serif;
+  background-color: black;
+}
+
+#previewContainer {
+  width: 20%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview {
+  width: 100%;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.preview-container {
+  position: relative;
+  width: 100%;
+}
+
+.preview:hover {
+  opacity: 1;
+}
+
+.preview-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 5px 2px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.preview-container:hover .preview-name {
+  opacity: 1;
+}
+
+#mainVideoContainer {
+  flex-grow: 1; /* The main video container will take the remaining space */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+#mainVideo {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
