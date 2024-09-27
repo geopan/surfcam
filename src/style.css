@@ -1,3 +1,11 @@
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Existing Styles */
 body,
 html {
   margin: 0;
@@ -8,18 +16,16 @@ html {
 }
 
 #previewContainer {
-  width: 20%;
+  flex: 0 0 20%;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-}
 
-.preview {
-  width: 100%;
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s;
+  /* Scrollbar Styling for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #555555 #1a1a1a;
 }
 
 .preview-container {
@@ -27,7 +33,16 @@ html {
   width: 100%;
 }
 
-.preview:hover {
+.preview {
+  width: 100%;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+  display: block;
+}
+
+.preview:hover,
+.preview-container.selected .preview {
   opacity: 1;
 }
 
@@ -45,23 +60,40 @@ html {
   transition: opacity 0.3s;
 }
 
-.preview-container:hover .preview-name {
+.preview-container:hover .preview-name,
+.preview-container.selected .preview-name {
   opacity: 1;
 }
 
+
 #mainVideoContainer {
-  flex-grow: 1; /* The main video container will take the remaining space */
+  flex: 1 1 auto;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  box-sizing: border-box; /* Include padding in the element's total width and height */
+  box-sizing: border-box;
 }
 
 #mainVideo {
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100%;
   max-width: 100%;
+}
+
+/* Scrollbar Styling for WebKit Browsers */
+#previewContainer::-webkit-scrollbar {
+  width: 10px;
+}
+
+#previewContainer::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+#previewContainer::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 5px;
+  border: 2px solid #1a1a1a;
 }
